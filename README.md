@@ -1,6 +1,30 @@
 # Wallflow Theme
 
+[![VS Code Marketplace](https://img.shields.io/visual-studio-marketplace/v/mksg.wallflow-theme?label=VS%20Code%20Marketplace&logo=visual-studio-code)](https://marketplace.visualstudio.com/items?itemName=mksg.wallflow-theme)
+[![Installs](https://img.shields.io/visual-studio-marketplace/i/mksg.wallflow-theme?logo=visual-studio-code)](https://marketplace.visualstudio.com/items?itemName=mksg.wallflow-theme)
+
 A **dynamic VS Code theme** that automatically updates to match your wallpaper colors using [wallflow](https://github.com/MKSG-MugunthKumar/wallflow).
+
+## Installation
+
+### VS Code Marketplace (Recommended)
+
+**[Install from VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=mksg.wallflow-theme)**
+
+Or search for "Wallflow Theme" in VS Code Extensions.
+
+### Command Line
+
+```bash
+code --install-extension mksg.wallflow-theme
+```
+
+### Homebrew (macOS)
+
+```bash
+brew install --cask visual-studio-code  # if not installed
+code --install-extension mksg.wallflow-theme
+```
 
 ## Features
 
