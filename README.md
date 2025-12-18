@@ -1,48 +1,41 @@
-# Wal Theme
+# Wallflow Theme
 
-This extensions for Visual Studio Code adds a **real time updated theme** that is dynamically generated from the color palette provided by [pywal](https://github.com/dylanaraps/pywal).
-
-## Screenshots
-
-![Example 1](https://raw.githubusercontent.com/dlasagno/vscode-wal-theme/master/screenshots/1.png)
-
-![Example 2](https://raw.githubusercontent.com/dlasagno/vscode-wal-theme/master/screenshots/2.png)
-
-![Example 3](https://raw.githubusercontent.com/dlasagno/vscode-wal-theme/master/screenshots/3.png)
+A **dynamic VS Code theme** that automatically updates to match your wallpaper colors using [wallflow](https://github.com/MKSG-MugunthKumar/wallflow).
 
 ## Features
 
-- Real time updates of the color scheme
-- Two variants available: borderless and bordered
-- Works out of the box: no setup needed, just run pywal as you normally would
+- Real-time color updates when your wallpaper changes
+- Two variants: borderless and bordered
+- Works automatically with wallflow - no manual configuration needed
 
 ## Requirements
 
-In order to use this extension pywal is needed, it should be run before updating the theme provided by this extension.
+This extension requires [wallflow](https://github.com/MKSG-MugunthKumar/wallflow) to be installed and running. The extension reads colors from `~/.cache/wallflow/colors.json`.
 
-## Extension Commands
+### Quick Setup
 
-This extension contributes the following command:
+1. Install wallflow (CLI or macOS app)
+2. Install this extension
+3. Select "Wallflow" or "Wallflow Bordered" as your color theme
+4. Run wallflow to set a wallpaper - VS Code will update automatically
 
-- `walTheme.update`: execute a manual update of the theme
+## Commands
 
-## Extension Settings
+- `Wallflow Theme: Update` - Manually update the theme colors
 
-This extension contributes the following setting:
+## Settings
 
-- `walTheme.autoUpdate`: enable/disable the auto update of the theme provided by this extension
-
-## Release Notes
-
-The release notes can be find in the [changelog](https://github.com/dlasagno/vscode-wal-theme/blob/master/CHANGELOG.md).
+- `wallflowTheme.autoUpdate` - Enable/disable automatic theme updates (default: true)
 
 ## Troubleshooting
 
-If the extension doesn't update automatically, while the auto updates are enabled, try to do a manual update with the update command.
-If the manual update doesn't work try reloading the window.
+If the extension doesn't update automatically:
+1. Run the manual update command: `Wallflow Theme: Update`
+2. Reload the VS Code window
+3. Ensure wallflow has generated colors in `~/.cache/wallflow/`
 
 ---
 
 ## Credits
 
-This extension is inspired by [Ayu](https://github.com/ayu-theme/vscode-ayu) and [vscode-wal](https://github.com/bluedrack/vscode-wal).
+Forked from [Wal Theme](https://github.com/dlasagno/vscode-wal-theme) by Daniele Lasagno.

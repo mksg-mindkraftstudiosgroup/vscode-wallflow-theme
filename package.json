@@ -1,19 +1,19 @@
 {
-	"name": "wal-theme",
-	"displayName": "Wal Theme",
-	"description": "A theme generated with pywal color palette",
-	"publisher": "dlasagno",
-	"author": "Daniele Lasagno",
+	"name": "wallflow-theme",
+	"displayName": "Wallflow Theme",
+	"description": "Dynamic VS Code theme from wallflow wallpaper colors",
+	"publisher": "mksg",
+	"author": "MKSG",
 	"license": "MIT",
-	"version": "1.2.0",
+	"version": "1.0.0",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/dlasagno/vscode-wal-theme"
+		"url": "https://github.com/mksg-mindkraftstudiosgroup/vscode-wal-theme"
 	},
 	"bugs": {
-		"url": "https://github.com/dlasagno/vscode-wal-theme/issues"
+		"url": "https://github.com/mksg-mindkraftstudiosgroup/vscode-wal-theme/issues"
 	},
-	"homepage": "https://github.com/dlasagno/vscode-wal-theme#readme",
+	"homepage": "https://github.com/mksg-mindkraftstudiosgroup/vscode-wal-theme#readme",
 	"engines": {
 		"vscode": "^1.34.0"
 	},
@@ -26,44 +26,46 @@
 	],
 	"keywords": [
 		"theme",
+		"wallflow",
+		"wallpaper",
 		"pywal",
-		"wal"
+		"dynamic"
 	],
 	"icon": "icon.png",
 	"activationEvents": [
 		"*",
-		"onCommand:walTheme.update"
+		"onCommand:wallflowTheme.update"
 	],
 	"main": "./out/extension.js",
 	"contributes": {
 		"commands": [
 			{
-				"command": "walTheme.update",
+				"command": "wallflowTheme.update",
 				"title": "Update",
-				"category": "Wal Theme"
+				"category": "Wallflow Theme"
 			}
 		],
 		"configuration": {
-			"title": "Wal Theme",
+			"title": "Wallflow Theme",
 			"properties": {
-				"walTheme.autoUpdate": {
+				"wallflowTheme.autoUpdate": {
 					"type": "boolean",
 					"default": true,
-					"description": "Update automatically the theme when the pywal color palette changes"
+					"description": "Automatically update the theme when wallflow colors change"
 				}
 			}
 		},
 		"themes": [
 			{
-				"label": "Wal",
+				"label": "Wallflow",
 				"uiTheme": "vs-dark",
-				"path": "./themes/wal.json",
+				"path": "./themes/wallflow.json",
 				"_watch": true
 			},
 			{
-				"label": "Wal Bordered",
+				"label": "Wallflow Bordered",
 				"uiTheme": "vs-dark",
-				"path": "./themes/wal-bordered.json",
+				"path": "./themes/wallflow-bordered.json",
 				"_watch": true
 			}
 		]
