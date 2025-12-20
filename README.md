@@ -34,7 +34,7 @@ code --install-extension mksg.wallflow-theme
 
 ## Requirements
 
-This extension requires [wallflow](https://github.com/MKSG-MugunthKumar/wallflow) to be installed and running. The extension reads colors from `~/.cache/wallflow/colors.json`.
+This extension requires [wallflow](https://github.com/MKSG-MugunthKumar/wallflow) to be installed and running. The extension reads colors from `~/.cache/mksg/wallflow/colors`. and `colors.json`, the latter file is used to get the background color.
 
 ### Quick Setup
 
@@ -54,9 +54,10 @@ This extension requires [wallflow](https://github.com/MKSG-MugunthKumar/wallflow
 ## Troubleshooting
 
 If the extension doesn't update automatically:
+
 1. Run the manual update command: `Wallflow Theme: Update`
 2. Reload the VS Code window
-3. Ensure wallflow has generated colors in `~/.cache/wallflow/`
+3. Ensure wallflow has generated colors in `~/.cache/mksg/wallflow/`
 
 ---
 
