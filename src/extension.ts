@@ -1,13 +1,13 @@
-import * as vscode from 'vscode';
-import * as fs from 'fs';
-import * as path from 'path';
-import * as os from 'os';
 import * as chokidar from 'chokidar';
 import * as Color from 'color';
+import * as fs from 'fs';
+import * as os from 'os';
+import * as path from 'path';
+import * as vscode from 'vscode';
 import template from './template';
 
 // Wallflow cache path (changed from pywal's ~/.cache/wal)
-const wallflowCachePath = path.join(os.homedir(), '.cache', 'wallflow');
+const wallflowCachePath = path.join(os.homedir(), '.cache', 'mksg', 'wallflow');
 const wallflowColorsPath = path.join(wallflowCachePath, 'colors');
 const wallflowColorsJsonPath = path.join(wallflowCachePath, 'colors.json');
 let autoUpdateWatcher: chokidar.FSWatcher | null = null;
@@ -70,7 +70,7 @@ function generateColorThemes() {
 										 .toString()
 										 .split(/\s+/, 16)
 			.map(hex => Color(hex));
-		
+
 		if (fs.existsSync(wallflowColorsJsonPath)) {
 			type WallflowJson = {
 				special: {
