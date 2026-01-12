@@ -6,8 +6,56 @@ import * as path from 'path';
 import * as vscode from 'vscode';
 import template from './template';
 
-// Wallflow cache path (changed from pywal's ~/.cache/wal)
-const wallflowCachePath = path.join(os.homedir(), '.cache', 'mksg', 'wallflow');
+/**
+ * Returns the platform-appropriate cache directory for wallflow.
+ * Checks multiple paths in order of preference:
+ * 1. Wallflow cache paths (XDG_CACHE_HOME, platform defaults)
+ * 2. macOS Application Support (for macOS app users)
+ * 3. Pywal cache path (fallback for free CLI users)
+ */
+function getWallflowCachePath(): string {
+	const home = os.homedir();
+	const platform = os.platform();
+
+	// Build list of paths to try in order of preference
+	const pathsToTry: string[] = [];
+
+	// 1. XDG_CACHE_HOME if explicitly set (works cross-platform)
+	if (process.env.XDG_CACHE_HOME) {
+		pathsToTry.push(path.join(process.env.XDG_CACHE_HOME, 'mksg', 'wallflow'));
+	}
+
+	// 2. Platform-specific wallflow cache paths
+	if (platform === 'darwin') {
+		// macOS: Try Library/Caches first, then Application Support
+		pathsToTry.push(path.join(home, 'Library', 'Caches', 'mksg', 'wallflow'));
+		pathsToTry.push(path.join(home, 'Library', 'Application Support', 'wallflow'));
+	} else if (platform === 'win32') {
+		const localAppData = process.env.LOCALAPPDATA || path.join(home, 'AppData', 'Local');
+		pathsToTry.push(path.join(localAppData, 'mksg', 'wallflow'));
+	} else {
+		// Linux and others: XDG default
+		pathsToTry.push(path.join(home, '.cache', 'mksg', 'wallflow'));
+	}
+
+	// 3. Pywal fallback path (for users of free wallflow CLI with pywal)
+	const pywalPath = path.join(home, '.cache', 'wal');
+	pathsToTry.push(pywalPath);
+
+	// Find the first path that exists
+	for (const cachePath of pathsToTry) {
+		if (fs.existsSync(cachePath)) {
+			return cachePath;
+		}
+	}
+
+	// If none exist, return the first wallflow path (will be created when wallflow runs)
+	// This prefers wallflow over pywal for new installations
+	return pathsToTry[0];
+}
+
+// Wallflow cache path (platform-appropriate)
+const wallflowCachePath = getWallflowCachePath();
 const wallflowColorsPath = path.join(wallflowCachePath, 'colors');
 const wallflowColorsJsonPath = path.join(wallflowCachePath, 'colors.json');
 let autoUpdateWatcher: chokidar.FSWatcher | null = null;
